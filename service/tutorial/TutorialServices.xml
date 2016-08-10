@@ -1,0 +1,35 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.0.xsd">
+
+    <!--<service verb="create" noun="Tutorial" type="inline">-->
+        <!--<in-parameters>-->
+            <!--<auto-parameters entity-name="Tutorial" include="nonpk"/>-->
+            <!--<parameter name="name" required="true"/>-->
+        <!--</in-parameters>-->
+        <!--<out-parameters>-->
+            <!--<auto-parameters include="pk" required="true"/>-->
+        <!--</out-parameters>-->
+        <!--<actions>-->
+            <!--<entity-find entity-name="Tutorial" list="projectList">-->
+                <!--<econdition field-name="name" value="${name}" operator="equals"/>-->
+            <!--</entity-find>-->
+    <!---->
+            <!--<if condition="projectList">-->
+                <!--<return error="true" message="Tutorial name is already exist!"/>-->
+            <!--</if>-->
+            <!--<service-call in-map="context" name="create#tutorial.Tutorial"/>-->
+        <!--</actions>-->
+    <!--</service>-->
+
+    <service verb="create" noun="Tutorial" type="script"
+             location="component://tutorial/script/tutorial/createTutorial.groovy">
+        <in-parameters>
+            <auto-parameters include="all"/>
+            <parameter name="name" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </out-parameters>
+
+    </service>
+</services>
